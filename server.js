@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+// const TripsController = require("./controllers/trip");
+
 const app = express();
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI); //mongodb://localhost/fullstack-jeopardy
@@ -17,8 +19,12 @@ connection.on('error', (err) => {
 }); 
 
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/client/build/'));
+
+// app.use("/api/trips", TripsController);
 app.get('/', (req,res) => {
-  res.send('Hello world!')
+    res.send('hello')
+    res.sendFile(__dirname + '/client/build/index.html')
 })
 
 const PORT = process.env.PORT || 3001;
