@@ -23,7 +23,6 @@ app.use(express.static(__dirname + '/client/build/'));
 
 // app.use("/api/trips", TripsController);
 app.get('/', (req,res) => {
-    res.send('hello')
     res.sendFile(__dirname + '/client/build/index.html')
 })
 

@@ -6,22 +6,25 @@ class UserHome extends Component {
     constructor(){
     super();
     this.state = {
+      username: 'Susy',
       trips: ''
     }
   }
 
   componentWillMount(){
-    axios.get('/api/trips').then(res => {
+    axios.get('/api/homepage').then(res => {
       console.log(res.data);
-      this.setState({trips: res.data})
+      this.setState({username: res.data})
     });
   }
+  // _handleChange = e => {
+  //   this.setState({ username: e.target.value });
+  // };
 
   render() {
     return (
       <div>
           <h1>{this.state.username}'s Dashboard</h1>
-          <button>Add New Trip</button>
       </div>
     );
   }
