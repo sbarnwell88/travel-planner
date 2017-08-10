@@ -36,16 +36,16 @@ const hiking = new Activity ({
     paidFor: true
 })
 
-const italy = new Trip ({
+const Italy = new Trip ({
     place: 'Rome',
     date: new Date(),
     activities: [vatican]
 })
 
-const chile = new Trip ({
+const Chile = new Trip ({
     place: 'Chile',
     date: new Date(),
-    activities: [hiking, wineTasting, sightseeing]
+    activities: [hiking, wineTasting]
 })
 
 const susy = new User ({
@@ -57,8 +57,8 @@ const susy = new User ({
 vatican.save().then(() => console.log("Vatican Saved!"));
 wineTasting.save().then(() => console.log("Wine Tasting Saved!"));
 hiking.save().then(() => console.log("Hiking Saved!"));
-italy.save().then(() => console.log("Italy Saved!"));
-chile.save().then(() => console.log("Chile Saved!"));
+Italy.save().then(() => console.log("Italy Saved!"));
+Chile.save().then(() => console.log("Chile Saved!"));
 susy.save().then(() => console.log("User Saved!"))
 
 mongoose.connection.close();
