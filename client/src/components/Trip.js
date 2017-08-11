@@ -4,7 +4,8 @@ class Trip extends Component {
     render() {
         return (
             <div>
-                {this.props.place}
+                <h3>Place: {this.props.place}</h3>
+                <h5>Date: {this.props.date}</h5>
             </div>
         );
     }

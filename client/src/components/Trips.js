@@ -14,7 +14,6 @@ class Trips extends Component {
         
     return (
         <div>
-            Hello
             {tripsComponent}
         </div>
         );
