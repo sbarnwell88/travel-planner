@@ -4,7 +4,7 @@ class Activities extends Component {
     render() {
         return (
             <div>
-                
+                Hello from Activities
             </div>
         );
     }

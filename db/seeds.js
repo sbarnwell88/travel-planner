@@ -54,11 +54,12 @@ const susy = new User ({
     trips: [Chile, Italy]
 })
 
-vatican.save().then(() => console.log("Vatican Saved!"));
-wineTasting.save().then(() => console.log("Wine Tasting Saved!"));
-hiking.save().then(() => console.log("Hiking Saved!"));
-Italy.save().then(() => console.log("Italy Saved!"));
-Chile.save().then(() => console.log("Chile Saved!"));
-susy.save().then(() => console.log("User Saved!"))
+vatican.save().then(() => console.log("Activity Saved!"));
+wineTasting.save().then(() => console.log("Activity Saved!"));
+hiking.save().then(() => console.log("Activity Saved!"));
+Italy.save().then(() => console.log("Trip Saved!"));
+Chile.save().then(() => console.log("Trip Saved!"));
+susy.save().then(() => console.log("User Saved!"));
+
 
 mongoose.connection.close();
