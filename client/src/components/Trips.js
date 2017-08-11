@@ -5,7 +5,6 @@ import Trip from './Trip';
 
 class Trips extends Component {
     render() {
-
     const trips = this.props.trips;
 
     const tripsComponent = trips.map((trip, index) => {

@@ -33,7 +33,7 @@ class UserHome extends Component {
       <div>
           <h1>Hello {this.state.user.username}</h1> 
           <h3>Where to Next?</h3>
-           {/* <Link to={`/user/${this.state.id}/trips`}>{this.state.user.username}'s Trips</Link>  */}
+            {/* <Link to={`/user/${this.state.id}/activities`}>Activities</Link>   */}
            <Trips trips={this.state.user.trips} />    
       </div>
     );
