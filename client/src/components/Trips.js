@@ -7,7 +7,8 @@ class Trips extends Component {
         return (
             <div>
                 Hello from Trips
-                <Link to={`/:userId/trips/activities`}>Activities</Link>
+                {/* {this.props.trips.place} */}
+                {/* <Link to={`/:userId/trips/activities`}>Activities</Link> */}
             </div>
         );
     }
