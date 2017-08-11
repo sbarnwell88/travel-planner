@@ -3,14 +3,31 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class UserHome extends Component {
+  constructor() {
+    super();
+    this.state = {
+      id: '',
+      user: [],
+      trips: []
+    }
+  }
+
+  componentWillMount() {
+    const id = this.props.match.params.userId
+    console.log(id);
+    axios.get(`/api/user/${id}`)
+    .then(res => {
+    console.log(res.data)
+    // const user = res.data
+    // this.setState({user});
+    })
+  }
 
   render() {
     return (
       <div>
-            {this.props.idOfUser}
-          <h1>{this.props.username}'s Dashboard</h1> 
-          <p>{this.props.trips}</p>
-          <button><Link to={`/userId/trips`}>Trips</Link></button>
+          Hello from Home
+          {this.state.user.username}
       </div>
     );
   }

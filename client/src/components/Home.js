@@ -10,10 +10,8 @@ class Home extends Component {
     this.state = {
       users: [],
       username: '',
-      trips: []
     }
   }
-
   componentWillMount() {
     this._userName()
   }
@@ -26,22 +24,15 @@ class Home extends Component {
       })
   }
 
-  _userTrips = () => {
-    axios.get(`/api/user/:userId/trips`)
-      .then((res) => {
-        const trips = res.data;
-        this.setState({trips})
-      })
-  }
-
   render() {
+
         return (
             <div>
-                {this.state.users.map((user, i) => {
+                 {this.state.users.map((user, i) => {
                     return (
-                    <div key={i}>
+                    <div key={i}> 
                     <Link to={`/user/${user._id}`}>{user.username}'s Dashboard</Link>
-                    </div>
+                     </div> 
                     )
                 })}
             </div>
