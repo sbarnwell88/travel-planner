@@ -7,7 +7,7 @@ class UserHome extends Component {
   render() {
     return (
       <div>
-
+            {this.props.idOfUser}
           <h1>{this.props.username}'s Dashboard</h1> 
           <p>{this.props.trips}</p>
           <button><Link to={`/userId/trips`}>Trips</Link></button>
