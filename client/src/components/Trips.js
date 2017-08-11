@@ -1,17 +1,28 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Trip from './Trip';
 
 
 class Trips extends Component {
     render() {
-        return (
-            <div>
-                Hello from Trips
-                {/* {this.props.trips.place} */}
-                {/* <Link to={`/:userId/trips/activities`}>Activities</Link> */}
-            </div>
+
+    const trips = this.props.trips;
+
+    const tripsComponent = trips.map((trip, index) => {
+        return <Trip {...trip} key={index} />
+    })
+        
+    return (
+        <div>
+            Hello
+            {tripsComponent}
+        </div>
         );
     }
+}
+
+Trips.defaultProps = {
+   trips: [] 
 }
 
 export default Trips;

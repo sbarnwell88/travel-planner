@@ -8,8 +8,9 @@ class UserHome extends Component {
     super();
     this.state = {
       id: '',
-      user: [],
-      trips: []
+      user: {
+        trips: [],
+      }
     }
   }
 
@@ -18,21 +19,21 @@ class UserHome extends Component {
     console.log(id);
     axios.get(`/api/user/${id}`)
     .then(res => {
-    console.log(res.data)
     this.setState({
       id: res.data._id,
-      user: res.data.username,
-      trips: res.data.trips
+      user: res.data
     });
+    console.log(this.state.user.trips);
     })
   }
 
   render() {
+
     return (
       <div>
-          <h1>Hello {this.state.user}</h1>
-          <Link to={`/user/${this.state.id}/trips`}>Trips</Link>
-          {/* <Trips trips={this.state.trips} /> */}
+          <h1>Hello {this.state.user.username}</h1> 
+           <Link to={`/user/${this.state.id}/trips`}>{this.state.user.username}'s Trips</Link> 
+           <Trips trips={this.state.user.trips} />    
       </div>
     );
   }
