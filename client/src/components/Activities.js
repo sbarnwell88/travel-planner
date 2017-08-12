@@ -8,44 +8,50 @@ class Activities extends Component {
         this.state = {
             user: {
                 trips: {
-                    activities: {
-                        paidFor: false,
-                        price: 0,
-                        date: Date,
-                        description: ''
-                }
+                    activities: []
             }
-        }
+      }
     }
-}
+  }
+    // componentWillMount() {
+    //     const id = this.props.match.params.userId
+    //     const tripId = this.props.match.params.tripId
+    //     axios.get(`/api/user/${id}/trips/${tripId}/`)
+    //     .then(res => {
+    //         this.setState({activity: res.data})
+    //     })
+    //     console.log(this.state)
+    // }
 
     componentWillMount() {
-    this._activitiesInfo()
-  }
-  
-  _activitiesInfo = () => {
-    const id = this.props.match.params.userId
-    const tripId = this.props.match.params.tripId
-    axios.get(`/api/user/${id}/trips/${tripId}/`)
-      .then((res) => {
-        this.setState({user: res.data})
-      })
-    console.log(this.state.user.trips);
-  }
+        const id = this.props.match.params.userId
+        const tripId = this.props.match.params.tripId
+            axios.get(`/api/user/${id}/trips/${tripId}`)
+                .then(res => {
+                this.setState({
+                    id: res.data._id,
+                    user: res.data
+            });
+            console.log(this.state.user.activities);
+        })
+    }
 
     render() {
+
+    //     const activityComponents = this.state.user.map((activity, index) => {
+    //     return <ActivityList {...activity} key={index} />
+    // })
+
         return (
             <div>
                 Hello from Activities
-                <ActivityList trips={this.state.user.trips}/>
+                {/* {activityComponents} */}
             </div>
         );
     }
 }
 
 Activities.defaultProps = {
-   user: [],
-   trips: [],
    activities: []
 }
 

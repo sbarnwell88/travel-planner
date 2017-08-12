@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Trips from './Trips';
+import NewTripForm from './NewTripForm';
 
 class UserHome extends Component {
   constructor() {
@@ -27,14 +28,20 @@ class UserHome extends Component {
     })
   }
 
-  render() {
+  _addNewTripList = (newTrip) => {
+    const trips = [...this.state.user.trips];
+    trips.push(newTrip);
+    this.setState({trips});
+  }
 
+  render() {
+            <NewTripForm addNewTripList={this._addNewTripList}></NewTripForm> 
     return (
       <div>
           <h1>Hello {this.state.user.username}</h1> 
           <h3>Where to Next?</h3>
-            {/* <Link to={`/user/${this.state.id}/activities`}>Activities</Link>   */}
-           <Trips trips={this.state.user.trips} 
+            <Link to={`/user/${this.state.id}/trips/new`}>New Trip</Link>  
+            <Trips trips={this.state.user.trips} 
            userId={this.state.id}/>    
       </div>
     );
