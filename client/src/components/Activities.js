@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ActivityList from './ActivityList';
 
 class Activities extends Component {
     constructor() {
@@ -29,17 +30,23 @@ class Activities extends Component {
       .then((res) => {
         this.setState({user: res.data})
       })
-    console.log(this.state.user.trips.activities.price);
+    console.log(this.state.user.trips);
   }
 
     render() {
         return (
             <div>
                 Hello from Activities
-                <h3>Price: {this.state.user.trips.activities.price}</h3>
+                <ActivityList trips={this.state.user.trips}/>
             </div>
         );
     }
+}
+
+Activities.defaultProps = {
+   user: [],
+   trips: [],
+   activities: []
 }
 
 export default Activities;
