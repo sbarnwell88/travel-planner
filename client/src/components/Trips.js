@@ -7,8 +7,11 @@ class Trips extends Component {
     render() {
     const trips = this.props.trips;
 
+    const userId = this.props.userId;
+    console.log(userId);
+
     const tripsComponent = trips.map((trip, index) => {
-        return <Trip {...trip} key={index} />
+        return <Trip {...trip} key={index} userId={userId}/>
     })
         
     return (
@@ -21,6 +24,7 @@ class Trips extends Component {
 
 Trips.defaultProps = {
    trips: [],
+   userId: ''
 }
 
 export default Trips;

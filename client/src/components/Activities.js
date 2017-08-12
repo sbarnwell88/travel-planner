@@ -5,31 +5,38 @@ class Activities extends Component {
     constructor() {
         super();
         this.state = {
-            activities: {
-                paidFor: false,
-                price: 0,
-                date: Date,
-                description: ''
+            user: {
+                trips: {
+                    activities: {
+                        paidFor: false,
+                        price: 0,
+                        date: Date,
+                        description: ''
+                }
             }
         }
     }
+}
 
     componentWillMount() {
     this._activitiesInfo()
   }
   
   _activitiesInfo = () => {
-    axios.get(`/api/user/:userId/trips/:tripId/activities`)
+    const id = this.props.match.params.userId
+    const tripId = this.props.match.params.tripId
+    axios.get(`/api/user/${id}/trips/${tripId}/`)
       .then((res) => {
-        const activities = res.data;
-        this.setState({activities})
+        this.setState({user: res.data})
       })
+    console.log(this.state.user.trips.activities.price);
   }
 
     render() {
         return (
             <div>
                 Hello from Activities
+                <h3>Price: {this.state.user.trips.activities.price}</h3>
             </div>
         );
     }
