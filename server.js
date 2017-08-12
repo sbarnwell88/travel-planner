@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const UserController = require('./controllers/user');
 const TripsController = require("./controllers/trip");
+// const ActivityController = require("./controllers/activity");
 
 const app = express();
 mongoose.Promise = global.Promise;
@@ -22,7 +23,8 @@ connection.on('error', (err) => {
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/client/build/'));
 
-app.use('/api/user/:id/trips', TripsController);
+// app.use('/api/user/:id/trips/:id/activity', ActivityController);
+app.use('/api/user/:id/trips/', TripsController);
 app.use('/api/user', UserController)
 app.get('/', (req,res) => {
     res.sendFile(__dirname + '/client/build/index.html')

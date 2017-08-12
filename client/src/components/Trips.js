@@ -20,7 +20,7 @@ class Trips extends Component {
 }
 
 Trips.defaultProps = {
-   trips: [] 
+   trips: [],
 }
 
 export default Trips;

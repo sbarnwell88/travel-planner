@@ -16,7 +16,6 @@ class UserHome extends Component {
 
   componentWillMount() {
     const id = this.props.match.params.userId
-    console.log(id);
     axios.get(`/api/user/${id}`)
     .then(res => {
     this.setState({
@@ -24,6 +23,7 @@ class UserHome extends Component {
       user: res.data
     });
     console.log(this.state.user.trips);
+    console.log(this.state.id);
     })
   }
 
