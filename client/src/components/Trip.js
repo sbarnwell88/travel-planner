@@ -15,6 +15,5 @@ class Trip extends Component {
 
 Trip.defaultProps = {
    place: [],
-   userId: ''
 }
 export default Trip;
