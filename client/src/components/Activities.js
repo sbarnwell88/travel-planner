@@ -6,11 +6,9 @@ class Activities extends Component {
     constructor() {
         super();
         this.state = {
-            user: {
                 trips: {
                     activities: []
-            }
-      }
+        }
     }
   }
     // componentWillMount() {
@@ -30,22 +28,25 @@ class Activities extends Component {
                 .then(res => {
                 this.setState({
                     id: res.data._id,
-                    user: res.data
+                    trips: res.data,
             });
-            console.log(this.state.user.activities);
+            console.log(this.state.trips.activities);
+            console.log(res.data.activities);
         })
     }
 
     render() {
+        const activities = this.state.trips.activities;
+        console.log(activities);
 
-    //     const activityComponents = this.state.user.map((activity, index) => {
-    //     return <ActivityList {...activity} key={index} />
-    // })
+        const activityComponents = activities.map((activity, index) => {
+        return <ActivityList {...activity} key={index} />
+    })
 
         return (
             <div>
                 Hello from Activities
-                {/* {activityComponents} */}
+                 {activityComponents} 
             </div>
         );
     }

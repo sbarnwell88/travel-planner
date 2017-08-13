@@ -16,4 +16,10 @@ router.get("/:id", (req,res) => {
   });
 });
 
+router.put("/:id", (req, res) => {
+  Trip.findByIdAndUpdate(req.params.id, {points: req.body.points}).then((trip) =>{
+    res.json(trip);
+  })
+});
+
 module.exports = router;

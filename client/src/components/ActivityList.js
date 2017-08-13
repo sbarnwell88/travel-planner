@@ -4,13 +4,16 @@ const ActivityList = (props) => {
 
     return (
         <div>
-            Hello from ActivityList
+            <h3>Description: {props.description}</h3>
+            <h3>Date: {props.date}</h3>
+            <h3>Paid for?: {props.paidFor}</h3>
+            <h3>Price: {props.price}</h3>
         </div>
     );
 };
 
 ActivityList.defaultProps = {
-   activity: [],
+   description: [],
 }
 
 export default ActivityList;

@@ -28,14 +28,8 @@ class UserHome extends Component {
     })
   }
 
-  _addNewTripList = (newTrip) => {
-    const trips = [...this.state.user.trips];
-    trips.push(newTrip);
-    this.setState({trips});
-  }
-
-  render() {
-            <NewTripForm addNewTripList={this._addNewTripList}></NewTripForm> 
+  render() { 
+    <NewTripForm addNewTripList={this._addNewTripList}></NewTripForm>
     return (
       <div>
           <h1>Hello {this.state.user.username}</h1> 
