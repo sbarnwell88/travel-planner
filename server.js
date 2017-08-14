@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const UserController = require('./controllers/user');
 const TripsController = require("./controllers/trip");
-const ActivityController = require("./controllers/activity");
+const ActivityController = require("./controllers/activities");
 
 const app = express();
 mongoose.Promise = global.Promise;
