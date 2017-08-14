@@ -29,7 +29,6 @@ class UserHome extends Component {
   }
 
   render() { 
-    <NewTripForm addNewTripList={this._addNewTripList}></NewTripForm>
     return (
       <div>
           <h1>Hello {this.state.user.username}</h1> 

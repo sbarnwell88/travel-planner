@@ -16,6 +16,16 @@ router.get("/:id", (req,res) => {
   });
 });
 
+router.post("/", (req, res) => {
+  const newTrip = new Trip();
+  console.log(req.body);
+  newTrip = req.body.trip;
+
+  newTrip.save().then((trip) => {
+    res.json(trip);
+  }).catch(err => console.log(err));
+})
+
 router.put("/:id", (req, res) => {
   Trip.findByIdAndUpdate(req.params.id, {points: req.body.points}).then((trip) =>{
     res.json(trip);

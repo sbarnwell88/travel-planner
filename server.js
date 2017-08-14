@@ -23,7 +23,7 @@ connection.on('error', (err) => {
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/client/build/'));
 
-app.use('/api/user/:id/trips/:id/activity', ActivityController);
+app.use('/api/user/:id/trips/:tripId/activities', ActivityController);
 app.use('/api/user/:id/trips', TripsController);
 app.use('/api/user/', UserController)
 app.get('/', (req,res) => {
