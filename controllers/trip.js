@@ -10,8 +10,8 @@ router.get("/", (req,res) => {
   })
 });
 
-router.get("/:id", (req,res) => {
-  Trip.findById(req.params.id).then((trip) => {
+router.get("/:tripId", (req,res) => {
+  Trip.findById(req.params.tripId).then((trip) => {
     res.json(trip);
   });
 });
@@ -26,8 +26,8 @@ router.post("/", (req, res) => {
   }).catch(err => console.log(err));
 })
 
-router.put("/:id", (req, res) => {
-  Trip.findByIdAndUpdate(req.params.id, {points: req.body.points}).then((trip) =>{
+router.put("/:tripId", (req, res) => {
+  Trip.findByIdAndUpdate(req.params.tripId, {points: req.body.points}).then((trip) =>{
     res.json(trip);
   })
 });

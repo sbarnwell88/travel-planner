@@ -13,20 +13,21 @@ router.get("/", (req,res) => {
 
 router.post("/", (req, res) => {
   const tripId = req.params.tripId;
-  const newActivityInfo = req.body;
+  const newActivityInfo = req.body.activities;
   
   Trip.findById(tripId).then((trip) => {
     const newActivity = new Activity(newActivityInfo);
-    trips.activities.push(newActivity);
-    return trips.save();
-  }).then((activity) => {
-    // newActivity.description = req.body.activities.description;
-    // newActivity.price = req.body.activities.price;
-    // newActivity.save().then((activity) => {
-    res.json(activity);
+    trip.activities.push(newActivity);
+    console.log(newActivity)
+    return trip.save();
+  }).then((trip) => {
+    res.json(trip);
+  //   // activity.price = req.body.activities.price;
+  //   // activity.save().then((activity) => {
+  //   res.json(activity);
   }).catch(err => console.log(err));
-})
 // })
+})
 
 
 router.get("/:id", (req,res) => {
