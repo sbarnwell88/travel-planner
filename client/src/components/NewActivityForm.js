@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from "react-router-dom";
+
 
 
 class NewActivityForm extends Component {
@@ -9,7 +11,8 @@ class NewActivityForm extends Component {
                 activities: {
                     description: '',
                     price: 0
-                }
+                },
+                redirect: false
             }
     }
 
@@ -38,11 +41,21 @@ class NewActivityForm extends Component {
     axios.post(`/api/user/${userId}/trips/${tripId}/activities/`, payload)
         .then((res) => {
       console.log("Success!");
+      console.log(userId);
+      console.log(tripId);
+      this.setState({"redirect": true});
     })
     .catch(err => console.log(err));
   };
 
+
     render() {
+        const userId = this.props.match.params.userId
+    console.log(userId);
+    const tripId = this.props.match.params.tripId
+        if (this.state.redirect) {
+            return <Redirect to={`/user/${userId}/trips/${tripId}/activities/`}/>
+        } else {
         return (
             <div>
                 Hello from new NewActivityForm
@@ -64,6 +77,7 @@ class NewActivityForm extends Component {
         </form>
             </div>
         );
+        }
     }
 }
 
