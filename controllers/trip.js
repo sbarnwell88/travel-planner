@@ -26,10 +26,10 @@ router.post("/", (req, res) => {
   }).catch(err => console.log(err));
 })
 
-router.put("/:tripId", (req, res) => {
-  Trip.findByIdAndUpdate(req.params.tripId, {points: req.body.points}).then((trip) =>{
-    res.json(trip);
-  })
-});
+// router.put("/:tripId", (req, res) => {
+//   Trip.findByIdAndUpdate(req.params.tripId, {points: req.body.points}).then((trip) =>{
+//     res.json(trip);
+//   })
+// });
 
 module.exports = router;

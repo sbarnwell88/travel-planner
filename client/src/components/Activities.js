@@ -27,14 +27,6 @@ class Activities extends Component {
         })
     }
 
-    // _removeActivity(e) {
-    //     const activitiesToDelete = this.state.trips.activities.filter((activity) => {
-    //         return activity !== e.target.value;
-    //     });
-    //     this.setState({
-    //         activities: activitiesToDelete
-    //     })
-    // }
 
     render() {
         const userId = this.props.match.params.userId;
@@ -42,7 +34,13 @@ class Activities extends Component {
         console.log(activities);
 
         const activityComponents = activities.map((activity, index) => {
-        return <ActivityList {...activity} key={index} remove={this._removeActivity}/>
+        return <ActivityList 
+        {...activity} 
+        key={index} 
+        userId={this.props.match.params.userId}
+        tripId={this.props.match.params.tripId}
+        activityId={this.state.id}
+        />
     })
 
         return (

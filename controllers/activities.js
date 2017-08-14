@@ -11,6 +11,7 @@ router.get("/", (req,res) => {
   })
 });
 
+// NEW ROUTE
 router.post("/", (req, res) => {
   const tripId = req.params.tripId;
   const newActivityInfo = req.body.activities;
@@ -22,16 +23,12 @@ router.post("/", (req, res) => {
     return trip.save();
   }).then((trip) => {
     res.json(trip);
-  //   // activity.price = req.body.activities.price;
-  //   // activity.save().then((activity) => {
-  //   res.json(activity);
   }).catch(err => console.log(err));
-// })
 })
 
-
-router.get("/:id", (req,res) => {
-  Activity.findById(req.params.id).then((activity) => {
+// SHOW ROUTE
+router.get("/:activityId", (req,res) => {
+  Activity.findById(req.params.activityId).then((activity) => {
     res.json(activity);
   });
 });
