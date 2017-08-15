@@ -29,18 +29,16 @@ class Activities extends Component {
         // this._deleteActivity();
     }
 
-    // _deleteActivity() {
-    //     const id = this.props.match.params.userId;
-    //     const tripId = this.props.match.params.tripId;
-    //     const activityId = this.props.match.params.activityId;
-    //     console.log(activityId);
-    //     axios.delete(`/api/user/${id}/trips/${tripId}/activities/${activityId}/delete`)
-    //         .then(res => {
-    //             this.setState({
-    //                 activities: res.data
-    //             })
-    //         })
-    // }
+    _deleteActivity = (userId, tripId, activityId, e) => {
+        e.preventDefault();
+        axios.delete(`/api/user/${userId}/trips/${tripId}/activities/${activityId}/delete`)
+            .then(res => {
+                this.setState({
+                    activities: res.data
+                })
+            })
+    }
+    
 
 //     _deleteActivityFromListByIndex = (activityToDelete) => {
 //     const activityList = [...this.state.trips.activities];
@@ -59,6 +57,7 @@ class Activities extends Component {
         userId={this.props.match.params.userId}
         tripId={this.props.match.params.tripId}
         activityId={this.state.id}
+        delete={this._deleteActivity}
         />
     })
 

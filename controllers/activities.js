@@ -4,11 +4,20 @@ const Trip = require("../models/trip");
 const User = require('../models/user');
 const router = express.Router({ mergeParams: true });
 
-
+// INDEX ROUTE
 router.get("/", (req,res) => {
-  Activity.find().then(activity => {
-    res.json(activity);
-  })
+  const userId = req.params.id;
+  const tripId = req.params.tripId;
+  const activityId = req.params.activityId;
+
+  User.findById(userId).then((user) => {
+    console.log(user)
+    const foundTrip = user.trips.find((trip) => {
+      return trip.id = tripId
+    })
+    console.log(foundTrip.activities)
+    res.json(foundTrip.activities)
+});
 });
 
 // NEW ROUTE
@@ -52,14 +61,26 @@ router.put('/:activityId', (req, res) => {
 });
 
 //DELETE
-router.delete('/:activityId/delete', (req, res) => {
-  const activityIdToDelete = req.params.activityId;
-  Activity.findByIdAndRemove(activityIdToDelete).then(() => {
-    console.log(`You have been visited by the demon of delete, ${activityIdToDelete} is gone`);
+router.get('/:activityId/delete', (req, res) => {
+  const userId = req.params.id;
+  const tripId = req.params.tripId;
+  const activityId = req.params.activityId;
+
+  User.findById(userId).then((user) => {
+    console.log(user)
+    const foundTrip = user.trips.find((trip) => {
+      return trip.id = tripId
+    })
+    console.log(foundTrip)
+    const foundActivity = foundTrip.activities.find((activity) => {
+      return activity.id = activityId
+    })
+    console.log(foundActivity)
+    foundTrip.activities.id(activityId).remove();
+    user.save();
+
+    console.log('success')
   })
-    Activity.find().then(activity => {
-    res.json(activity);
-  })
-});
+})
 
 module.exports = router;

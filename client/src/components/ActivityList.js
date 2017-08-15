@@ -9,13 +9,15 @@ const ActivityList = (props) => {
     const tripId = props.tripId;
     const activityId = props.activityId;
     console.log(activityId)
-    // const _deleteActivity = () => {
-    //     console.log(activityId);
-    //     axios.delete(`/api/user/${userId}/trips/${tripId}/activities/${activityId}/delete`)
+
+    // _deleteActivity = (activityId) => {
+    //     axios.delete(`/api/user/${userId}/trips/${tripId}/activities/{activityId}/delete`)
     //         .then(res => {
-    //             console.log("You deleted it!")
+    //             this.setState({
+    //                 activities: res.data
     //             })
-    //         }
+    //         })
+    // }
 
     return (
         <div>
@@ -24,8 +26,7 @@ const ActivityList = (props) => {
                 pathname: `/user/${userId}/trips/${tripId}/activities/${activityId}`,
                 state: {activity: props}
             }}>{props.description}</Link>
-            {/* <NewActivityForm activity={props}/> */}
-            {/* <button onClick={_deleteActivity()}>Delete</button> */}
+             <button onClick={props.delete(userId, tripId, activityId)}>Delete</button> 
             </h3>
         </div>
     );
