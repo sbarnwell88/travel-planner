@@ -32,7 +32,7 @@ class Activities extends Component {
         const id = this.props.match.params.userId;
         const tripId = this.props.match.params.tripId;
         const activityId = this.props.match.params.activityId
-        axios.delete(`/api/user/${id}/trips/${tripId}/activities/${activityId}/`)
+        axios.delete(`/api/user/${id}/trips/${tripId}/activities/${activityId}/delete`)
             .then(res => {
                 this.setState({
                     activities: res.data
