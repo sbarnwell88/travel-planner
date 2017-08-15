@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ActivityList from './ActivityList';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ActivityShow from './ActivityShow';
 
 class Activities extends Component {
     constructor() {
@@ -27,11 +28,28 @@ class Activities extends Component {
         })
     }
 
+    _deleteActivity() {
+        const id = this.props.match.params.userId;
+        const tripId = this.props.match.params.tripId;
+        const activityId = this.props.match.params.activityId
+        axios.delete(`/api/user/${id}/trips/${tripId}/activities/${activityId}/`)
+            .then(res => {
+                this.setState({
+                    activities: res.data
+                })
+                console.log(this.state.trips)
+            })
+    }
+
+//     _deleteActivityFromListByIndex = (activityToDelete) => {
+//     const activityList = [...this.state.trips.activities];
+//     activityList.splice(activityToDelete, 1);
+//     this.setState({activityList});
+//   };
 
     render() {
         const userId = this.props.match.params.userId;
         const activities = this.state.trips.activities;
-        console.log(activities);
 
         const activityComponents = activities.map((activity, index) => {
         return <ActivityList 
@@ -47,6 +65,7 @@ class Activities extends Component {
             <div>
                    {activityComponents}
                  <Link to={`/user/${userId}/trips/${this.state.id}/activities/new`}>Add New Activity</Link>
+                 <ActivityList delete={this._deleteActivity} />  
             </div>
         );
     }

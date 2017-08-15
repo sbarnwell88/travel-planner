@@ -33,4 +33,16 @@ router.get("/:activityId", (req,res) => {
   });
 });
 
+//DELETE
+router.delete('/:activityId', (req, res) => {
+    Activity.remove({
+        _id: req.params.activityId
+    }, 
+      (err => {
+        if (err)
+            res.send(err);
+        res.json({ message: 'Activity deleted!' })
+    }));
+});
+
 module.exports = router;

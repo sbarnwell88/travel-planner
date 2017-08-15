@@ -8,14 +8,15 @@ const ActivityList = (props) => {
     const tripId = props.tripId;
     const activityId = props.activityId;
 
-    const description = props.description;
-
-    <ActivityShow 
-    description={description}/>
-
     return (
         <div>
-            <h3>Description: <Link to={`/user/${userId}/trips/${tripId}/activities/${activityId}`}>{props.description}</Link></h3>
+            <h3>
+                <Link to={{
+                pathname: `/user/${userId}/trips/${tripId}/activities/${activityId}`,
+                state: {activity: props}
+            }}>{props.description}</Link>
+            <button onClick={props.delete}>Delete</button>
+            </h3>
         </div>
     );
 };
