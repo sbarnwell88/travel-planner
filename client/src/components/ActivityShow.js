@@ -9,20 +9,23 @@ class ActivityShow extends Component {
     }
 
     componentWillMount () {
-        this.setState({activity: this.props.location.state.activity.description})
-        console.log(this.props.location.state.activity);
+        if (this.props.location.state){
+            this.setState({activity: this.props.location.state.activity})
+            console.log(this.props.location.state.activity);
+        }
     }
 
     render() {
 
         return (
             <div>
-                <div>{this.props.location.state.activity.description}</div>
-                <div>{this.props.location.state.activity.price}</div>
-                <div>{this.props.location.state.activity.paidFor}</div>
+                <div>{this.state.activity.description}</div>
+                <div>{this.state.activity.price}</div>
+                <div>{this.state.activity.paidFor}</div>
             </div>
         );
     }
 }
+
 
 export default ActivityShow;

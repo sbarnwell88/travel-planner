@@ -36,10 +36,11 @@ class NewActivityForm extends Component {
 
 
     render() {
+     console.log(this.props)
         const userId = this.props.match.params.userId
         const tripId = this.props.match.params.tripId
         if (this.state.redirect) {
-            return <Redirect to={`/user/${userId}/trips/${tripId}/activities/`}/>
+            return <Redirect to={`/user/${userId}/trips/${tripId}/activities`}/>
         } else {
         return (
             <div>
@@ -61,6 +62,21 @@ class NewActivityForm extends Component {
         </form>
             </div>
         );
+        }
+    }
+}
+NewActivityForm.defaultProps = {
+   match: {
+       params: {
+           userId: '',
+           tripId: '',
+       }
+   },
+    location: {
+        state: {
+            activity: {
+                _id: ''
+            }
         }
     }
 }
