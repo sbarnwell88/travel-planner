@@ -15,6 +15,10 @@ class Activities extends Component {
   }
 
     componentWillMount() {
+        this._createActivityData();
+    }
+
+    _createActivityData= () => {
         const id = this.props.match.params.userId
         const tripId = this.props.match.params.tripId
             axios.get(`/api/user/${id}/trips/${tripId}`)
@@ -55,7 +59,6 @@ class Activities extends Component {
         userId={this.props.match.params.userId}
         tripId={this.props.match.params.tripId}
         activityId={this.state.id}
-        delete={this._deleteActivity}
         />
     })
 

@@ -5,7 +5,7 @@ const User = require('../models/user');
 const router = express.Router({ mergeParams: true });
 
 // INDEX ROUTE
-router.get("/", (req,res) => {
+router.get("/", (req, res) => {
   const userId = req.params.id;
   const tripId = req.params.tripId;
   const activityId = req.params.activityId;
@@ -17,14 +17,14 @@ router.get("/", (req,res) => {
     })
     console.log(foundTrip.activities)
     res.json(foundTrip.activities)
-});
+  });
 });
 
 // NEW ROUTE
 router.post("/", (req, res) => {
   const tripId = req.params.tripId;
   const newActivityInfo = req.body.activities;
-  
+
   Trip.findById(tripId).then((trip) => {
     const newActivity = new Activity(newActivityInfo);
     trip.activities.push(newActivity);
@@ -36,7 +36,7 @@ router.post("/", (req, res) => {
 })
 
 // SHOW ROUTE
-router.get("/:activityId", (req,res) => {
+router.get("/:activityId", (req, res) => {
   Activity.findById(req.params.activityId).then((activity) => {
     res.json(activity);
   });
@@ -50,7 +50,7 @@ router.put('/:activityId', (req, res) => {
   Activity.findByIdAndUpdate(
     activityIdToUpdate,
     updatedActivityInfo,
-    {new: true}
+    { new: true }
   ).then((activity) => {
     console.log(`activity with ID ${activity._id} has been updated`);
     res.json(activity);
@@ -61,26 +61,32 @@ router.put('/:activityId', (req, res) => {
 });
 
 //DELETE
-router.get('/:activityId/delete', (req, res) => {
+router.delete('/:activityId/delete', (req, res) => {
   const userId = req.params.id;
   const tripId = req.params.tripId;
   const activityId = req.params.activityId;
 
-  User.findById(userId).then((user) => {
-    console.log(user)
-    const foundTrip = user.trips.find((trip) => {
-      return trip.id = tripId
+  User.findById(userId)
+    .then((user) => {
+      console.log(user)
+      const foundTrip = user.trips.find((trip) => {
+        return trip.id = tripId
+      })
+      console.log(foundTrip)
+      const foundActivity = foundTrip.activities.find((activity) => {
+        return activity.id = activityId
+      })
+      console.log(foundActivity)
+      foundTrip.activities.id(foundActivity._id).remove();
+      return user.save()
     })
-    console.log(foundTrip)
-    const foundActivity = foundTrip.activities.find((activity) => {
-      return activity.id = activityId
+    .then(() => {
+      console.log('success')
+      res.send(200);
     })
-    console.log(foundActivity)
-    foundTrip.activities.id(activityId).remove();
-    user.save();
-
-    console.log('success')
-  })
+    .catch((error) => {
+      console.log(error);
+    })
 })
 
 module.exports = router;

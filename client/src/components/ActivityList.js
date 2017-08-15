@@ -12,17 +12,15 @@ class ActivityList extends Component {
         }
     }
 
-    _deleteActivity = () => {
-        const userId = this.props.userId;
-        const tripId = this.props.tripId;
-        const activityId = this.props._id;
-        axios.get(`/api/user/${userId}/trips/${tripId}/activities/${activityId}/delete`)
-            .then(res => {
-                this.setState({
-                    activities: res.data
-                })
-            })
-    }
+    // _deleteActivity = () => {
+    //     const userId = this.props.userId;
+    //     const tripId = this.props.tripId;
+    //     const activityId = this.props._id;
+    //     axios.get(`/api/user/${userId}/trips/${tripId}/activities/${activityId}/delete`)
+    //         .then(res => {
+    //             this.props.activityData();
+    //         })
+    // }
 
     render() {
         const userId = this.props.userId;
@@ -36,6 +34,7 @@ class ActivityList extends Component {
                 pathname: `/user/${userId}/trips/${tripId}/activities/${activityId}`,
                 state: {activity: this.props}
             }}>{this.props.description}</Link>
+            <button onClick={this._deleteActivity}>delete</button>
             </h3>
         </div>
     );

@@ -15,6 +15,18 @@ class ActivityShow extends Component {
         }
     }
 
+    //     _deleteActivity = () => {
+    //     const userId = this.props.userId;
+    //     const tripId = this.props.tripId;
+    //     const activityId = this.props._id;
+    //     axios.get(`/api/user/${userId}/trips/${tripId}/activities/${activityId}/delete`)
+    //         .then(res => {
+    //             this.setState({
+    //                 activities: res.data
+    //             })
+    //         })
+    // }
+
     render() {
 
         return (
