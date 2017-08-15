@@ -4,7 +4,7 @@ const Trip = require("../models/trip");
 const User = require('../models/user');
 const router = express.Router({ mergeParams: true });
 
-
+//INDEX
 router.get("/", (req, res) => {
   const userId = req.params.id;
   const tripId = req.params.tripId;
@@ -15,27 +15,33 @@ router.get("/", (req, res) => {
     res.json(arrayOfTrips)
   });
 });
+//SHOW
+router.get('/:tripId', (req, res) => {
+    const userId = req.params.id;
+    const tripId = req.params.tripId;
 
-router.get("/:tripId", (req,res) => {
-  Trip.findById(req.params.tripId).then((trip) => {
-    res.json(trip);
-  });
+    User.findById(userId)
+        .then((user) => {
+            const foundTrip = user.trips.find((trip) => {
+                return trip.id === tripId;
+            })
+            res.json(foundTrip)
+        })
+        .catch((error) => {
+            console.log("Failed to find" + error);
+        })
 });
 
-router.post("/", (req, res) => {
-  const newTrip = new Trip();
-  console.log(req.body);
-  newTrip = req.body.trip;
+// router.post("/", (req, res) => {
+//   const newTrip = new Trip();
+//   console.log(req.body);
+//   newTrip = req.body.trip;
 
-  newTrip.save().then((trip) => {
-    res.json(trip);
-  }).catch(err => console.log(err));
-})
-
-// router.put("/:tripId", (req, res) => {
-//   Trip.findByIdAndUpdate(req.params.tripId, {points: req.body.points}).then((trip) =>{
+//   newTrip.save().then((trip) => {
 //     res.json(trip);
-//   })
-// });
+//   }).catch(err => console.log(err));
+// })
+
+
 
 module.exports = router;

@@ -7,7 +7,6 @@ import Trips from './components/Trips';
 import Activities from './components/Activities';
 import NewTripForm from './components/NewTripForm';
 import NewActivityForm from './components/NewActivityForm';
-import ActivityShow from './components/ActivityShow';
 
 class App extends Component {
   render(){
@@ -24,7 +23,6 @@ class App extends Component {
             <Route exact path="/user/:userId/trips/new" component={NewTripForm}/>
             <Route exact path="/user/:userId/trips/:tripId/activities/" component={Activities} />
             <Route exact path="/user/:userId/trips/:tripId/activities/new/" component={NewActivityForm}/>
-            <Route exact path="/user/:userId/trips/:tripId/activities/:activityId/" component={ActivityShow}/>
           </div>
           </div>
       </Router>

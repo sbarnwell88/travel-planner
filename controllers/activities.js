@@ -93,23 +93,19 @@ router.delete('/:activityId/delete', (req, res) => {
   User.findById(userId)
     .then((user) => {
       // console.log(user)
-      const foundTrip = user.trips.find((trip) => {
-        return trip.id === tripId
+      const newTrips = user.trips.map((trip) => {
+        if (trip.id === tripId){
+          const newActivities = trip.activities.filter((activity) => {
+            return activity.id !== activityId
+          })
+          trip.activities = newActivities;
+        }
+        console.log(trip)
+        return trip
       })
-      // console.log(foundTrip)
-      const foundActivity = foundTrip.activities.find((activity) => {
-        return activity.id === activityId
-      })
-      // console.log(foundActivity)
-      // foundTrip.activities.id(foundActivity._id).remove();
-
-      const newActivities = foundTrip.activities.filter((activity) => {
-        return activity.id !== activityId
-      })
-      foundTrip.activities = newActivities;
-
-      console.log(foundTrip.activities);
-      return user.save()
+      console.log(newTrips)
+      user.trips = newTrips;
+      return user.save();
     })
     .then(() => {
       console.log('success')

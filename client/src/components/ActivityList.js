@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
-import ActivityShow from './ActivityShow';
 import NewActivityForm from './NewActivityForm';
 
 class ActivityList extends Component {
@@ -13,7 +12,6 @@ class ActivityList extends Component {
         }
     }
 
-    //GET RID OF ACTIVITYSHOW?
 
      _deleteActivity = () => {
         const userId = this.props.userId;

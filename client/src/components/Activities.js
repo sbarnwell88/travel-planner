@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ActivityList from './ActivityList';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import ActivityShow from './ActivityShow';
 
 class Activities extends Component {
     constructor() {
