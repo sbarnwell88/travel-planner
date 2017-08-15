@@ -26,18 +26,16 @@ class Activities extends Component {
             console.log(this.state.trips.activities);
             console.log(res.data.activities);
         })
-        // this._deleteActivity();
     }
 
-    _deleteActivity = (userId, tripId, activityId, e) => {
-        e.preventDefault();
-        axios.delete(`/api/user/${userId}/trips/${tripId}/activities/${activityId}/delete`)
-            .then(res => {
-                this.setState({
-                    activities: res.data
-                })
-            })
-    }
+    // _deleteActivity = (userId, tripId, activityId) => {
+    //     axios.delete(`/api/user/${userId}/trips/${tripId}/activities/${activityId}/delete`)
+    //         .then(res => {
+    //             this.setState({
+    //                 activities: res.data
+    //             })
+    //         })
+    // }
     
 
 //     _deleteActivityFromListByIndex = (activityToDelete) => {
