@@ -2,12 +2,18 @@ const express = require("express");
 const Activity = require("../models/activity");
 const Trip = require("../models/trip");
 const User = require('../models/user');
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
-router.get("/", (req,res) => {
-  Trip.find().then(trip => {
-    res.json(trip);
-  })
+
+router.get("/", (req, res) => {
+  const userId = req.params.id;
+  const tripId = req.params.tripId;
+
+  User.findById(userId)
+  .then((user) => {
+    const arrayOfTrips = user.trips
+    res.json(arrayOfTrips)
+  });
 });
 
 router.get("/:tripId", (req,res) => {

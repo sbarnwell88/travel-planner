@@ -15,13 +15,11 @@ class Activities extends Component {
   }
 
     componentWillMount() {
-        this._createActivityData();
+        this._createActivityData(this.props.match.params.userId, this.props.match.params.tripId);
     }
 
-    _createActivityData= () => {
-        const id = this.props.match.params.userId
-        const tripId = this.props.match.params.tripId
-            axios.get(`/api/user/${id}/trips/${tripId}`)
+    _createActivityData= (userId, tripId) => {
+            axios.get(`/api/user/${userId}/trips/${tripId}`)
                 .then(res => {
                 this.setState({
                     id: res.data._id,
@@ -32,21 +30,6 @@ class Activities extends Component {
         })
     }
 
-    // _deleteActivity = (userId, tripId, activityId) => {
-    //     axios.delete(`/api/user/${userId}/trips/${tripId}/activities/${activityId}/delete`)
-    //         .then(res => {
-    //             this.setState({
-    //                 activities: res.data
-    //             })
-    //         })
-    // }
-    
-
-//     _deleteActivityFromListByIndex = (activityToDelete) => {
-//     const activityList = [...this.state.trips.activities];
-//     activityList.splice(activityToDelete, 1);
-//     this.setState({activityList});
-//   };
 
     render() {
         const userId = this.props.match.params.userId;
@@ -55,6 +38,7 @@ class Activities extends Component {
         const activityComponents = activities.map((activity, index) => {
         return <ActivityList 
         {...activity} 
+        createActivityData={this._createActivityData}
         key={index} 
         userId={this.props.match.params.userId}
         tripId={this.props.match.params.tripId}

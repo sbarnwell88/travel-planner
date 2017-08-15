@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 
 class ActivityShow extends Component {
     constructor(){
         super();
         this.state= {
-            activity: {}
+            activity: []
         }
     }
 
@@ -15,23 +17,11 @@ class ActivityShow extends Component {
         }
     }
 
-    //     _deleteActivity = () => {
-    //     const userId = this.props.userId;
-    //     const tripId = this.props.tripId;
-    //     const activityId = this.props._id;
-    //     axios.get(`/api/user/${userId}/trips/${tripId}/activities/${activityId}/delete`)
-    //         .then(res => {
-    //             this.setState({
-    //                 activities: res.data
-    //             })
-    //         })
-    // }
-
     render() {
 
         return (
             <div>
-                <div>{this.state.activity.description}</div>
+                <div>{this.props.description}</div>
                 <div>{this.state.activity.price}</div>
                 <div>{this.state.activity.paidFor}</div>
             </div>
@@ -40,4 +30,4 @@ class ActivityShow extends Component {
 }
 
 
-export default ActivityShow;
+export default withRouter(ActivityShow);
