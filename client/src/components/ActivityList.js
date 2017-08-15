@@ -27,6 +27,8 @@ class ActivityList extends Component {
         const tripId = this.props.tripId;
         const activityId = this.props._id;
 
+        console.log(this.props);
+
     return (
         <div>
             <h3>
@@ -34,7 +36,9 @@ class ActivityList extends Component {
             <div>{this.props.price}</div>
             <div>{this.props.date}</div>
             </h3>
-            <Link to={`/user/${userId}/trips/${tripId}/activities/${activityId}/edit`}>Edit Item</Link>
+            <Link to={`/user/${userId}/trips/${tripId}/activities/${activityId}/edit`}
+            activity={this.props}
+            >Edit Item</Link>
             <button onClick={this._deleteActivity}>delete</button>
         </div>
     );

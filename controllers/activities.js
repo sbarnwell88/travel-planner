@@ -62,7 +62,6 @@ router.put('/:activityId', (req, res) => {
     const updatedActivityInfo = req.body;
     const foundActivityArray =[];
     User.findById(userId)
-         
         .then((user) => {            
             const foundTrip = user.trips.find((trip) => {
                 return trip.id === tripId;
