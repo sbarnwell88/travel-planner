@@ -26,20 +26,21 @@ class Activities extends Component {
             console.log(this.state.trips.activities);
             console.log(res.data.activities);
         })
+        // this._deleteActivity();
     }
 
-    _deleteActivity() {
-        const id = this.props.match.params.userId;
-        const tripId = this.props.match.params.tripId;
-        const activityId = this.props.match.params.activityId
-        axios.delete(`/api/user/${id}/trips/${tripId}/activities/${activityId}/delete`)
-            .then(res => {
-                this.setState({
-                    activities: res.data
-                })
-                console.log(this.state.trips)
-            })
-    }
+    // _deleteActivity() {
+    //     const id = this.props.match.params.userId;
+    //     const tripId = this.props.match.params.tripId;
+    //     const activityId = this.props.match.params.activityId;
+    //     console.log(activityId);
+    //     axios.delete(`/api/user/${id}/trips/${tripId}/activities/${activityId}/delete`)
+    //         .then(res => {
+    //             this.setState({
+    //                 activities: res.data
+    //             })
+    //         })
+    // }
 
 //     _deleteActivityFromListByIndex = (activityToDelete) => {
 //     const activityList = [...this.state.trips.activities];

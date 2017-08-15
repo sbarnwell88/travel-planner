@@ -33,16 +33,33 @@ router.get("/:activityId", (req,res) => {
   });
 });
 
+//UPDATE ACTIVITIES
+router.put('/:activityId', (req, res) => {
+  const activityIdToUpdate = req.params.activityId;
+  const updatedActivityInfo = req.body;
+
+  Activity.findByIdAndUpdate(
+    activityIdToUpdate,
+    updatedActivityInfo,
+    {new: true}
+  ).then((activity) => {
+    console.log(`activity with ID ${activity._id} has been updated`);
+    res.json(activity);
+  }).catch((error) => {
+    console.log(`${activity._id} failed to update`);
+    console.log(error);
+  });
+});
+
 //DELETE
-router.delete('/:activityId', (req, res) => {
-    Activity.remove({
-        _id: req.params.activityId
-    }, 
-      (err => {
-        if (err)
-            res.send(err);
-        res.json({ message: 'Activity deleted!' })
-    }));
+router.delete('/:activityId/delete', (req, res) => {
+  const activityIdToDelete = req.params.activityId;
+  Activity.findByIdAndRemove(activityIdToDelete).then(() => {
+    console.log(`You have been visited by the demon of delete, ${activityIdToDelete} is gone`);
+  })
+    Activity.find().then(activity => {
+    res.json(activity);
+  })
 });
 
 module.exports = router;
