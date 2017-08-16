@@ -48,8 +48,8 @@ class Activities extends Component {
         return (
             <div>
                    {activityComponents}
-                 <Link to={`/user/${userId}/trips/${this.state.id}/activities/new`}>Add New Activity</Link>
-                 <ActivityList delete={this._deleteActivity} />  
+                 <div><Link to={`/user/${userId}/trips/${this.state.id}/activities/new`}>Add New Activity</Link></div>
+                 <div><Link to={`/user/${userId}/`}>Back to All Trips</Link></div>
             </div>
         );
     }

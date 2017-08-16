@@ -15,6 +15,23 @@ router.get("/", (req, res) => {
     res.json(arrayOfTrips)
   });
 });
+
+// NEW ROUTE
+router.post("/", (req, res) => {
+  const userId = req.params.id;
+  const newTripInfo = req.body.trips;
+
+  User.findById(userId).then((user) => {
+    const newTrip = new Trip(newTripInfo);
+    user.trips.push(newTrip);
+    console.log(newTrip)
+    return user.save();
+  }).then((user) => {
+    res.json(user);
+  }).catch(err => console.log(err));
+})
+
+
 //SHOW
 router.get('/:tripId', (req, res) => {
     const userId = req.params.id;
@@ -32,15 +49,29 @@ router.get('/:tripId', (req, res) => {
         })
 });
 
-// router.post("/", (req, res) => {
-//   const newTrip = new Trip();
-//   console.log(req.body);
-//   newTrip = req.body.trip;
+// // UPDATE TRIP
+// router.put('/:tripId', (req, res) => {
+//     const userId = req.params.id;
+//     const tripId = req.params.tripId;
+//     const updatedTripInfo = req.body;
+//     const foundTripArray =[];
+//     User.findById(userId)
+//         .then((user) => {            
+//             const foundTrip = user.trips.find((trip) => {
+//                 return trip.id === tripId;
+//             })
+//             foundTrip.place = req.body.place;
+//             foundTrip.date = req.body.date;
+//             foundTripArray.push(foundTrip);
 
-//   newTrip.save().then((trip) => {
-//     res.json(trip);
-//   }).catch(err => console.log(err));
-// })
+//             return user.save();
+
+//                 }).then((user) => {
+//                     console.log("updated user with ID of " + user._id)
+//                     res.json(foundTripArray)
+//                 })
+
+// });
 
 
 

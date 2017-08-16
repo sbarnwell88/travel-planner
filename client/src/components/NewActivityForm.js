@@ -36,7 +36,6 @@ class NewActivityForm extends Component {
 
 
     render() {
-     console.log(this.props)
         const userId = this.props.match.params.userId
         const tripId = this.props.match.params.tripId
         if (this.state.redirect) {

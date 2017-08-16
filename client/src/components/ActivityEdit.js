@@ -101,9 +101,9 @@ class ActivityEdit extends Component {
                     onChange={this._handleChange}
                     name='paidFor'
                     value={this.state.activities.paidFor} 
-                    type="text"
+                    type="boolean"
                     />
-                <button>Edit Activity</button>
+                <button>Update Activity</button>
                 </form>
             </div>
         );
