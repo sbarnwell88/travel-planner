@@ -8,7 +8,6 @@ import Activities from './components/Activities';
 import NewTripForm from './components/NewTripForm';
 import NewActivityForm from './components/NewActivityForm';
 import ActivityEdit from './components/ActivityEdit';
-import Login from './components/Login';
 
 class App extends Component {
   render(){
@@ -19,8 +18,7 @@ class App extends Component {
           <div>
           </div>
           <div>
-            <Route exact path="/" component={Login}/>
-            <Route exact path="/user/" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/user/:userId/" component={UserHome} />
             <Route exact path="/user/:userId/trips" component={Trips} />
             <Route exact path="/user/:userId/trips/new" component={NewTripForm}/>

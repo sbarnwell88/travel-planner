@@ -3,6 +3,8 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Trips from './Trips';
 import NewTripForm from './NewTripForm';
+import { HomeStyle, HomeComponents } from '../styles/User';
+
 
 class UserHome extends Component {
   constructor() {
@@ -30,13 +32,14 @@ class UserHome extends Component {
 
   render() { 
     return (
-      <div>
-          <h1>Hello {this.state.user.username}</h1> 
-          <h3>Where to Next?</h3>
-            <Link to={`/user/${this.state.id}/trips/new`}>New Trip</Link>  
-            <Trips trips={this.state.user.trips} 
-           userId={this.state.id}/>    
-      </div>
+      <HomeStyle>
+        <HomeComponents>
+            <h1>Hello {this.state.user.username}!</h1>
+            <h3>Where to Next?</h3>
+            <p><Trips trips={this.state.user.trips} userId={this.state.id}/></p>
+           <p><Link to={`/user/${this.state.id}/trips/new`}>New Trip</Link></p>
+        </HomeComponents>
+      </HomeStyle>
     );
   }
 }

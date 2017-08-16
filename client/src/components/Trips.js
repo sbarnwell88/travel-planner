@@ -18,7 +18,7 @@ class Trips extends Component {
         
     return (
         <div>
-            {tripsComponent}
+            <p>{tripsComponent}</p>
             <TripSearch trip={this.state} />
         </div>
         );

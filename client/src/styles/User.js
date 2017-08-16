@@ -9,11 +9,40 @@ export const LoginUser = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 150px;
-        font-family: 'Shrikhand', cursive;
+        padding: 100px;
+        font-family: 'Rock Salt', cursive;
+        font-weight: bold;
     }
 `;
 
 export const HomeStyle = styled.div`
-    
+    background-image: url('https://st2.depositphotos.com/1700950/5778/i/950/depositphotos_57785227-stock-photo-travel-background-with-different-passport.jpg');
+    // background-repeat: no-repeat;
+    height: 1000px;
+    color: black;
+    display: flex;
+    justify-content: center;
 `;
+
+export const HomeComponents = styled.div`
+    h1 {
+        font-family: 'Rock Salt', cursive;
+        font-size: 80px;
+    }
+    h3 {
+        font-size: 60px;
+        font-family: 'Prompt', sans-serif;
+    }
+    p {
+        font-size: 40px;
+        font-family: 'Prompt', sans-serif;
+        font-weight: bold;
+    }
+    a {
+        font-size: 40px;
+        font-family: 'Prompt', sans-serif;
+        color: black;
+        font-weight: bold;
+    }
+    `;
+
