@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
   User.findById(userId).then((user) => {
     console.log(user)
     const foundTrip = user.trips.find((trip) => {
-      return trip.id = tripId
+      return trip.id === tripId
     })
     console.log(foundTrip.activities)
     res.json(foundTrip.activities)
