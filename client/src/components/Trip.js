@@ -7,7 +7,7 @@ class Trip extends Component {
         const userId = this.props.userId;
         return (
             <div>
-                <p>Place: <Link to={`/user/${userId}/trips/${this.props._id}/activities`}>{this.props.place}</Link></p>
+                <p><Link to={`/user/${userId}/trips/${this.props._id}/activities`}>{this.props.place}</Link> on {this.props.date}</p>
             </div>
         );
     }
