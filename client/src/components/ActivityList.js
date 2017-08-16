@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
 import NewActivityForm from './NewActivityForm';
-import { ActivityComponent } from '../styles/Activity';
+import { ActivityComponent, Row } from '../styles/Activity';
+
 
 
 class ActivityList extends Component {
@@ -41,17 +42,19 @@ class ActivityList extends Component {
         console.log(this.props);
 
     return (
+        <Row>
         <ActivityComponent>
             <h3>
             <div>Description: {this.props.description}</div>
             <div>${this.props.price}</div>
             <div>Date: {this.props.date}</div>
             </h3>
-            <div><button><Link to={`/user/${userId}/trips/${tripId}/activities/${activityId}/edit`}
+            <button><Link to={`/user/${userId}/trips/${tripId}/activities/${activityId}/edit`}
             activity={this.props}
-            >update activity</Link></button></div>
-            <div><button onClick={this._deleteActivity}>delete</button></div>
+            >update activity</Link></button>
+            <button onClick={this._deleteActivity}>delete</button>
         </ActivityComponent>
+        </Row>
     );
 };
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { PicComponent, FormComponent } from '../styles/Activity';
 
 
 class ActivityEdit extends Component {
@@ -65,47 +67,55 @@ class ActivityEdit extends Component {
             return <Redirect to={`/user/${userId}/trips/${tripId}/activities`}/>
         } else {
                     return (
+            <PicComponent>
+            <div className="navbar">
+                <Link to={`/user/${userId}`}>Home</Link>
+                <Link to={`/user/${userId}/`}>Back to All Trips</Link>
+            </div>
             <div>
-                Hello from Edit
+                Update Your Activity
+                <FormComponent>
                 <form onSubmit={this._handleSubmit}>
-                    <label htmlFor="description">Description: </label>
+                    <div><label htmlFor="description">Description: </label>
                     <input
                     onChange={this._handleChange}
                     name='description'
                     value={this.state.activities.description} 
                     type="text"
-                    />
-                    <label htmlFor="date">Date: </label>
+                    /></div>
+                    <div><label htmlFor="date">Date: </label>
                     <input
                     onChange={this._handleChange}
                     name='date'
                     value={this.state.activities.date} 
                     type="date"
-                    />
-                    <label htmlFor="price">Price: </label>
+                    /></div>
+                    <div><label htmlFor="price">Price: </label>
                     <input
                     onChange={this._handleChange}
                     name='price'
                     value={this.state.activities.price} 
                     type="number"
-                    />
-                    <label htmlFor="reservation">Reservation: </label>
+                    /></div>
+                    <div><label htmlFor="reservation">Reservation: </label>
                     <input
                     onChange={this._handleChange}
                     name='reservation'
                     value={this.state.activities.reservation} 
                     type="text"
-                    />
-                    <label htmlFor="paidFor">Paid for? </label>
+                    /></div>
+                    <div><label htmlFor="paidFor">Paid for? </label>
                     <input
                     onChange={this._handleChange}
                     name='paidFor'
                     value={this.state.activities.paidFor} 
                     type="boolean"
-                    />
+                    /></div>
                 <button>Update Activity</button>
                 </form>
+                </FormComponent>
             </div>
+        </PicComponent>
         );
         }
 
