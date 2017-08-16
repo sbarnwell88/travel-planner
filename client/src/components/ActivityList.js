@@ -12,6 +12,15 @@ class ActivityList extends Component {
         }
     }
 
+    componentWillMount() {
+        const userId = this.props.userId;
+        const tripId = this.props.tripId;
+        axios.get(`/api/user/${userId}/trips/${tripId}/activities`)
+        .then((res) => {
+            console.log(res.data);
+        })
+    }
+
      _deleteActivity = () => {
         const userId = this.props.userId;
         const tripId = this.props.tripId;
