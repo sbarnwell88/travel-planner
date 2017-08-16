@@ -70,10 +70,9 @@ class ActivityEdit extends Component {
             <PicComponent>
             <div className="navbar">
                 <Link to={`/user/${userId}`}>Home</Link>
-                <Link to={`/user/${userId}/`}>Back to All Trips</Link>
+                <Link to={`/user/${userId}/trips/${tripId}/activities`}>Back to Trip</Link>
             </div>
             <div>
-                Update Your Activity
                 <FormComponent>
                 <form onSubmit={this._handleSubmit}>
                     <div><label htmlFor="description">Description: </label>

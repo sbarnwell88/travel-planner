@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import { PicComponent, FormComponent } from '../styles/Activity';
 
 
 class NewTripForm extends Component {
@@ -43,14 +44,22 @@ class NewTripForm extends Component {
             return <Redirect to={`/user/${userId}/`}/>
         } else {
         return (
-            <div>
+            <PicComponent>
+                <div className="navbar">
+                    <Link to={`/user/${userId}`}>Home</Link>
+                    <Link to={`/user/${userId}/`}>Back to Trips</Link>
+                </div>
+            <div className="newtrip">
+            <FormComponent>
             Where to next?
               <form onSubmit={this._handleSubmit}>
                 <div><input name="place" type="text" placeholder="where?" onChange={this._handleChange}/></div>
                 <div><input name="date" type="date" placeholder="when?" onChange={this._handleChange}/></div>
-                <div><input type="submit" value="Add New Trip"/></div>
-            </form>                  
+                <input type="submit" value="Add New Trip"/>
+            </form>  
+            </FormComponent>                
             </div>
+            </PicComponent>
         );
         }
     }

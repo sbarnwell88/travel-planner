@@ -49,8 +49,30 @@ export const FormComponent = styled.div`
     margin: 20px;
     font-family: 'Prompt', sans-serif;
     font-size: 30px;
+    font-weight: bold;
     input {
-        
+        width: 200px;
+        height: 25px;
     }
-
+    button {
+        background-color: black;
+        border-color: black;
+        color: white;
+        font-weight: bold;
+        padding: 5px;
+        font-size: 15px;
+        margin: 10px;
+    }
+    input[type=submit] {
+        background-color: black;
+        border-color: black;
+        color: white;
+        font-weight: bold;
+        padding: 5px;
+        font-size: 15px;
+        margin: 10px;
+        height: 30px;
+    }
 `;
+
+

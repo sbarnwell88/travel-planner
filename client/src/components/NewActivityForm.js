@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import { PicComponent, FormComponent } from '../styles/Activity';
 
 class NewActivityForm extends Component {
     constructor() {
@@ -42,28 +43,36 @@ class NewActivityForm extends Component {
             return <Redirect to={`/user/${userId}/trips/${tripId}/activities`}/>
         } else {
         return (
-            <div>
-        <form onSubmit={this._handleSubmit}>
-          <div>
-            <label htmlFor="description">Description: </label>
-            <input value={this.state.activities.description} type="text" name="description" onChange={this._handleChange}/>
-          </div>
-          <div>
-            <label htmlFor="price">Price: </label>
-            <input
-              value={this.state.activities.price}
-              type="number"
-              name="price"
-              onChange={this._handleChange}
-            />
-          </div>
-        <button>Add Activity</button>
-        </form>
-            </div>
-        );
+            <PicComponent>
+                <div className="navbar">
+                    <Link to={`/user/${userId}`}>Home</Link>
+                    <Link to={`/user/${userId}/trips/${tripId}/activities`}>Back to Trip</Link>
+                </div>
+                <div>
+                <FormComponent>
+                <form onSubmit={this._handleSubmit}>
+                <div>
+                    <label htmlFor="description">Description: </label>
+                    <input value={this.state.activities.description} type="text" name="description" onChange={this._handleChange}/>
+                </div>
+                <div>
+                    <label htmlFor="price">Price: </label>
+                    <input
+                    value={this.state.activities.price}
+                    type="number"
+                    name="price"
+                    onChange={this._handleChange}
+                    />
+                </div>
+                <button>Add Activity</button>
+                </form>
+                </FormComponent>
+                </div>
+            </PicComponent>
+            );
+            }
         }
     }
-}
 NewActivityForm.defaultProps = {
    match: {
        params: {
