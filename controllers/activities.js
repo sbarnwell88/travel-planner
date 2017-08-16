@@ -22,19 +22,24 @@ router.get("/", (req, res) => {
 
 // NEW ROUTE
 router.post("/", (req, res) => {
+  const userId = req.params.id;
   const tripId = req.params.tripId;
+  const activityId = req.params.activityId;
   const newActivityInfo = req.body.activities;
 
-  Trip.findById(tripId).then((trip) => {
+  User.findById(userId).then((user) => {
+    const foundTrip = user.trips.find((trip) => {
+      return trip.id === tripId
+    }) 
     const newActivity = new Activity(newActivityInfo);
-    trip.activities.push(newActivity);
+    foundTrip.activities.push(newActivity);
     console.log(newActivity)
-    return trip.save();
-  }).then((trip) => {
-    res.json(trip);
+    return user.save();
+  }).then((user) => {
+    res.json(user);
   }).catch(err => console.log(err));
-})
-
+    })
+    
 // SHOW ROUTE
 router.get("/:activityId", (req, res) => {
   const userId = req.params.id;
