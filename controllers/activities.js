@@ -30,7 +30,7 @@ router.post("/", (req, res) => {
   User.findById(userId).then((user) => {
     const foundTrip = user.trips.find((trip) => {
       return trip.id === tripId
-    }) 
+    })
     const newActivity = new Activity(newActivityInfo);
     foundTrip.activities.push(newActivity);
     console.log(newActivity)
@@ -38,8 +38,8 @@ router.post("/", (req, res) => {
   }).then((user) => {
     res.json(user);
   }).catch(err => console.log(err));
-    })
-    
+})
+
 // SHOW ROUTE
 router.get("/:activityId", (req, res) => {
   const userId = req.params.id;
@@ -47,58 +47,56 @@ router.get("/:activityId", (req, res) => {
   const activityId = req.params.activityId;
 
   User.findById(userId)
-  .then((user) => {
-    const foundTrip = user.trips.find((trip) => {
-      return trip.id === tripId
-    })
-    const foundActivity = foundTrip.activities.find((activity) => {
-      return activity.id === activityId
-    })
-    console.log(foundTrip.activities)
-    res.json(foundActivity)
-  });
+    .then((user) => {
+      const foundTrip = user.trips.find((trip) => {
+        return trip.id === tripId
+      })
+      const foundActivity = foundTrip.activities.find((activity) => {
+        return activity.id === activityId
+      })
+      console.log(foundTrip.activities)
+      res.json(foundActivity)
+    });
 });
 
 // UPDATE ACTIVITY
 router.put('/:activityId', (req, res) => {
-    const userId = req.params.id;
-    const tripId = req.params.tripId;
-    const activityId = req.params.activityId;
-    const updatedActivityInfo = req.body;
-    const foundActivityArray =[];
-    User.findById(userId)
-        .then((user) => {            
-            const foundTrip = user.trips.find((trip) => {
-                return trip.id === tripId;
-            })
-            const foundActivity = foundTrip.activities.find((activity) => {
-              return activity.id === activityId;
-            })
-            foundActivity.description = req.body.description;
-            foundActivity.price = req.body.price;
-            foundActivityArray.push(foundActivity);
+  const userId = req.params.id;
+  const tripId = req.params.tripId;
+  const activityId = req.params.activityId;
+  const updatedActivityInfo = req.body;
+  const foundActivityArray = [];
+  User.findById(userId)
+    .then((user) => {
+      const foundTrip = user.trips.find((trip) => {
+        return trip.id === tripId;
+      })
+      const foundActivity = foundTrip.activities.find((activity) => {
+        return activity.id === activityId;
+      })
+      foundActivity.description = req.body.description;
+      foundActivity.price = req.body.price;
+      foundActivityArray.push(foundActivity);
 
-            return user.save();
+      return user.save();
 
-                }).then((user) => {
-                    console.log("updated user with ID of " + user._id)
-                    res.json(foundActivityArray)
-                })
+    }).then((user) => {
+      console.log("updated user with ID of " + user._id)
+      res.json(foundActivityArray)
+    })
 
 });
 
 //DELETE
 router.delete('/:activityId/delete', (req, res) => {
   const userId = req.params.id;
-  // console.log(userId)
   const tripId = req.params.tripId;
   const activityId = req.params.activityId;
 
   User.findById(userId)
     .then((user) => {
-      // console.log(user)
       const newTrips = user.trips.map((trip) => {
-        if (trip.id === tripId){
+        if (trip.id === tripId) {
           const newActivities = trip.activities.filter((activity) => {
             return activity.id !== activityId
           })

@@ -10,6 +10,9 @@ I created an app that will allow users to keep track of their activities as they
 
 #### Wireframes: https://marvelapp.com/2ef725d
 
+### ERDs
+![alt text](http://i.imgur.com/icvWMN2.jpg?1)
+
 ## Technologies Used:
 
 * HTML5 
