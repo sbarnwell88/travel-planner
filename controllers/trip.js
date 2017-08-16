@@ -49,29 +49,6 @@ router.get('/:tripId', (req, res) => {
         })
 });
 
-// // UPDATE TRIP
-// router.put('/:tripId', (req, res) => {
-//     const userId = req.params.id;
-//     const tripId = req.params.tripId;
-//     const updatedTripInfo = req.body;
-//     const foundTripArray =[];
-//     User.findById(userId)
-//         .then((user) => {            
-//             const foundTrip = user.trips.find((trip) => {
-//                 return trip.id === tripId;
-//             })
-//             foundTrip.place = req.body.place;
-//             foundTrip.date = req.body.date;
-//             foundTripArray.push(foundTrip);
-
-//             return user.save();
-
-//                 }).then((user) => {
-//                     console.log("updated user with ID of " + user._id)
-//                     res.json(foundTripArray)
-//                 })
-
-// });
 
 
 

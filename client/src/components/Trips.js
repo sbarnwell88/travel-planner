@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Trip from './Trip';
 import Activities from './Activities';
-import TripSearch from './TripSearch';
 
 
 class Trips extends Component {
@@ -19,7 +18,6 @@ class Trips extends Component {
     return (
         <div>
             <p>{tripsComponent}</p>
-            <TripSearch trip={this.state} />
         </div>
         );
     }
