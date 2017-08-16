@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ActivityList from './ActivityList';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { PicComponent} from '../styles/Activity';
 
 class Activities extends Component {
     constructor() {
@@ -46,11 +47,17 @@ class Activities extends Component {
     })
 
         return (
-            <div>
+            <PicComponent>
+                    <div className="navbar"><Link to={`/user/${userId}`}>Home</Link>
+                    <Link to={`/user/${userId}/trips/${this.state.id}/activities/new`}>Add New Activity</Link>
+                    <Link to={`/user/${userId}/`}>Back to All Trips</Link>
+                    </div>
+                    <div>
                    {activityComponents}
-                 <div><Link to={`/user/${userId}/trips/${this.state.id}/activities/new`}>Add New Activity</Link></div>
-                 <div><Link to={`/user/${userId}/`}>Back to All Trips</Link></div>
-            </div>
+                    
+                    <div></div>
+                    </div>
+            </PicComponent>
         );
     }
 }
