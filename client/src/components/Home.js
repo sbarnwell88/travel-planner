@@ -32,7 +32,7 @@ class Home extends Component {
                  {this.state.users.map((user, i) => {
                     return (
                     <div key={i}> 
-                    <Link to={`/user/${user._id}`}>Login</Link>
+                    <Link to={`/user/${user._id}`}>Enter Site</Link>
                      </div> 
                     )
                 })}

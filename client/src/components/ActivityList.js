@@ -4,7 +4,7 @@ import axios from 'axios';
 import {withRouter} from 'react-router-dom';
 import NewActivityForm from './NewActivityForm';
 import { ActivityComponent, Row } from '../styles/Activity';
-
+import Moment from 'react-moment';
 
 
 class ActivityList extends Component {
@@ -40,14 +40,13 @@ class ActivityList extends Component {
         const activityId = this.props._id;
 
         console.log(this.props);
-
     return (
         <Row>
         <ActivityComponent>
             <h3>
             <div>Description: {this.props.description}</div>
             <div>${this.props.price}</div>
-            <div>Date: {this.props.date}</div>
+            <div>Date: <Moment format="YYYY/MM/DD">{this.props.date}</Moment></div>
             </h3>
             <button><Link to={`/user/${userId}/trips/${tripId}/activities/${activityId}/edit`}
             activity={this.props}
