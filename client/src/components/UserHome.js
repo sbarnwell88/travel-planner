@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Trips from './Trips';
 import NewTripForm from './NewTripForm';
 import { HomeStyle, HomeComponents } from '../styles/User';
+import { PicComponent, ActivityComponent, Row} from '../styles/Activity';
+
 
 
 class UserHome extends Component {

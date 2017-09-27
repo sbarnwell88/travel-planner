@@ -24,6 +24,12 @@ export const ActivityComponent = styled.div`
     font-family: 'Prompt', sans-serif;
     font-weight: bold;
     font-size: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 30%;
+    margin: 10px;
+    display: flex;
+flex-wrap: wrap;
     button {
         background-color: black;
         border-color: black;
@@ -37,11 +43,26 @@ export const ActivityComponent = styled.div`
             font-size: 15px;
         }
     }
+    @media screen and (max-width: 766px) {
+        width: 70%;
+    }
+    @media screen and (min-width: 767px) and (max-width: 1200px) {
+        width: 50%;
+    }
+    @media screen and (min-width: 767px) and (max-width: 1200px) and (orientation : landscape) {
+        width: 40%;
+    }
 `;
 
 export const Row = styled.div`
 width:90%;
-margin:auto
+margin:auto;
+justify-content: center;
+display: flex;
+@media screen and (max-width: 766px) {
+    display: flex;
+    justify-content: center;
+}
 `;
 
 export const FormComponent = styled.div`

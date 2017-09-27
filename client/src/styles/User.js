@@ -4,6 +4,7 @@ export const LoginUser = styled.div`
     background-image: url('http://www.publicdomainpictures.net/pictures/190000/velka/travel-background-1469438128PVK.jpg');
     font-size: 80px;
     height: 1000px;
+    text-align: center;
     a {
         color: white;
         display: flex;
@@ -22,6 +23,9 @@ export const HomeStyle = styled.div`
     color: black;
     display: flex;
     justify-content: center;
+    @media screen and (min-width: 767px) and (max-width: 1200px) {
+        padding-bottom: 80px;
+    }
 `;
 
 export const HomeComponents = styled.div`
@@ -44,6 +48,34 @@ color: white;
         font-family: 'Prompt', sans-serif;
         color: white;
         font-weight: bold;
+    }
+    @media screen and (min-width: 767px) and (max-width: 1200px) {
+        h1 {
+            font-size: 50px;
+        }
+        h3 {
+            font-size: 30px;
+        }
+        p {
+            font-size: 20px;
+        }
+        a {
+            font-size: 20px;
+        }
+    }
+    @media screen and (max-width: 766px) {
+        h1 {
+            font-size: 40px;
+        }
+        h3 {
+            font-size: 30px;
+        }
+        p {
+            font-size: 20px;
+        }
+        a {
+            font-size: 20px;
+        }
     }
     `;
 

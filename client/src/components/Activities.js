@@ -48,7 +48,7 @@ class Activities extends Component {
 
         return (
             <PicComponent>
-                    <div className="navbar"><Link to={`/user/${userId}`}>Home</Link>
+                    <div className="navbar"><Link to={`/user/${userId}`}>AdventurePlanner</Link>
                     <Link to={`/user/${userId}/`}>Back to All Trips</Link>
                     </div>
                     <div>
